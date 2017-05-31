@@ -3,16 +3,16 @@
     $.fn.timeSchedule = function(options){
         var defaults = {
             rows : {},
-            startTime: "07:00",
-            endTime: "19:30",
-            widthTimeX:25,		// 1cell辺りの幅(px)
+            startTime: "08:00",
+            endTime: "22:00",
+            widthTimeX:20,		// 1cell辺りの幅(px)
             widthTime:600,		// 区切り時間(秒)
             timeLineY:50,		// timeline height(px)
             timeLineBorder:1,	// timeline height border
-            timeBorder:1,		// border width
+            timeBorder:0,		// border width
             timeLinePaddingTop:0,
             timeLinePaddingBottom:0,
-            headTimeBorder:1,	// time border width
+            headTimeBorder:0,	// time border width
             dataWidth:160,		// data width
             verticalScrollbar:0,	// vertical scrollbar width
             // event
@@ -107,10 +107,13 @@
             var $bar = jQuery('<div class="sc_Bar"><span class="head"><span class="time"></span></span><span class="text"></span></div>');
             var stext = element.formatTime(data["start"]);
             var etext = element.formatTime(data["end"]);
-            var snum = element.getScheduleCount(data["timeline"]);
+            console.log(data["timeline"])
+            //var snum = element.getScheduleCount(data["timeline"]);
+            var snum = data["timeline"];
+
             $bar.css({
                 left : (st * setting.widthTimeX),
-                top : ((snum * setting.timeLineY) + setting.timeLinePaddingTop),
+                //top : ((snum * setting.timeLineY) + setting.timeLinePaddingTop),
                 width : ((et - st) * setting.widthTimeX),
                 height : (setting.timeLineY)
             });
